@@ -13,4 +13,20 @@ public class Cat extends Mammal {
     public String speak() {
         return "meow!";
     }
+
+    public static String getName(String name) {
+        return "Nihgtingale";
+    }
+
+    public static int setBirthDate(int date) {
+        return 3;
+    }
+
+    public static Boolean eat(Boolean food) {
+        return true;
+    }
+
+    public static int getId(int id) {
+        return 0;
+    }
 }

@@ -40,4 +40,121 @@ public class CatTest {
         Assert.assertEquals(givenId, retrievedId);
     }
 
+
+
+    @Test
+    public void setNameTest() {
+
+        // Given
+        Cat cat = new Cat(null, null, null);
+        String givenName = "Nightingale";
+
+        // When
+        cat.setName(givenName);
+
+        // Then
+        String catName = cat.getName();
+        Assert.assertEquals(catName, givenName);
+    }
+
+    @Test
+    public void speakTest(){
+
+        // Given
+        Cat cat = new Cat("Nightingale", new Date(), 0);
+
+        // When
+        String speakResult = cat.speak();
+
+        // Then
+        Assert.assertEquals("meow!", speakResult);
+    }
+
+
+    @Test
+    public void setBirthDateTest(){
+
+        // Given;
+        Date date = new Date(12191985);
+        Cat cat = new Cat("Nightingale", date, 0);
+        Date newDate = new Date(12191985);
+
+        // When
+        cat.setBirthDate(newDate);
+
+        // Then
+        Assert.assertEquals(newDate, cat.getBirthDate());
+
+    }
+
+
+    @Test
+    public void eatTest(){
+
+        // Given
+        Cat cat = new Cat("Nightingale", new Date(), 0);
+        Food food = new Food();
+
+        // When
+
+        cat.eat(food);
+
+        // Then
+        Assert.assertEquals(new Integer(1), cat.getNumberOfMealsEaten());
+
+        // When
+
+        cat.eat(food);
+        cat.eat(food);
+        cat.eat(food);
+
+        // Then
+
+        Assert.assertEquals(new Integer(4), cat.getNumberOfMealsEaten());
+
+    }
+
+
+    @Test
+    public void getIdTest(){
+
+        // Given
+        Integer id = 0;
+        Cat cat = new Cat("Nightingale", new Date(), id);
+
+        // When
+        Integer getIdResult = cat.getId();
+
+        // Then
+        Assert.assertEquals(id, getIdResult);
+
+    }
+
+
+    @Test
+    public void animalInheritanceTest() {
+
+        // Given
+        Cat cat = new Cat("Nightingale", new Date(), 0);
+
+        // When
+        boolean catIsAnimalResult = cat instanceof Animal;
+
+        // Then
+        Assert.assertEquals(true, catIsAnimalResult);
+    }
+
+
+    @Test
+    public void mammalInheritanceTest(){
+
+        // Given
+        Cat cat = new Cat("Nightingale", new Date(), 0);
+
+        // When
+        boolean catIsMammalResult = cat instanceof Mammal;
+
+        // Then
+        Assert.assertEquals(true, catIsMammalResult);
+    }
 }
