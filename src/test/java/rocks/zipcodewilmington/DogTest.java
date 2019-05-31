@@ -2,7 +2,9 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  * @author leon on 4/19/18.
  */
 public class DogTest {
+
     // TODO - Create tests for `new Dog(String name, Date birthDate, Integer id)`
     // TODO - Create tests for `speak`
     // TODO - Create tests for `setBirthDate(Date birthDate)`
@@ -23,7 +26,7 @@ public class DogTest {
 
         // Given (a name exists and a dog exists)
         Dog dog = new Dog(null, null, null);
-        String givenName = "Milo";
+        String givenName = "Luna";
 
         // When (a dog's name is set to the given name)
         dog.setName(givenName);
@@ -38,9 +41,9 @@ public class DogTest {
     public void constructorTest() {
 
         // Given
-        String givenName = "Charlie";
+        String givenName = "Bacon Bits";
         Date givenBirthDate = new Date();
-        Integer givenId = 0;
+        Integer givenId = 77;
 
         // When
         Dog dog = new Dog(givenName, givenBirthDate, givenId);
@@ -61,13 +64,13 @@ public class DogTest {
     public void speakTest(){
 
         // Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Dog dog = new Dog("Biscuit", new Date(), 76);
 
         // When
         String speakResult = dog.speak();
 
         // Then
-        Assert.assertEquals("Ruff!", speakResult);
+        Assert.assertEquals("bark!", speakResult);
     }
 
 
@@ -76,7 +79,7 @@ public class DogTest {
 
         // Given;
         Date date = new Date(12251985);
-        Dog dog = new Dog("Charlie", date, 0);
+        Dog dog = new Dog("Ralphie", date, 75);
         Date newDate = new Date(12251985);
 
         // When
@@ -92,7 +95,7 @@ public class DogTest {
     public void eatTest(){
 
         // Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Dog dog = new Dog("Sugar Plum", new Date(), 74);
         Food food = new Food();
 
         // When
@@ -119,8 +122,8 @@ public class DogTest {
     public void getIdTest(){
 
         // Given
-        Integer id = 0;
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Integer id = 73;
+        Dog dog = new Dog("Benji", new Date(), 73);
 
         // When
         Integer getIdResult = dog.getId();
@@ -135,7 +138,7 @@ public class DogTest {
     public void animalInheritanceTest() {
 
         // Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Dog dog = new Dog("Lassie", new Date(), 71);
 
         // When
         boolean dogIsAnimalResult = dog instanceof Animal;
@@ -149,7 +152,7 @@ public class DogTest {
     public void mammalInheritanceTest(){
 
         // Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Dog dog = new Dog("Copper", new Date(), 70);
 
         // When
         boolean dogIsMammalResult = dog instanceof Mammal;

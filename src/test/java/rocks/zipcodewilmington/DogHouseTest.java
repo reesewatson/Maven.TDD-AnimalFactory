@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Before;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
@@ -7,10 +8,15 @@ import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 import org.junit.Assert;
 import java.util.Date;
 
+import static rocks.zipcodewilmington.animals.animal_storage.DogHouse.*;
+import static rocks.zipcodewilmington.animals.animal_storage.DogHouse.getDogById;
+import static rocks.zipcodewilmington.animals.animal_storage.DogHouse.getNumberOfDogs;
+
 /**
  * @author leon on 4/19/18.
  */
 public class DogHouseTest {
+
     // TODO - Create tests for `void add(Dog dog)`
     // TODO - Create tests for `void remove(Integer id)`
     // TODO - Create tests for `void remove(Dog dog)`
@@ -23,65 +29,66 @@ public class DogHouseTest {
         String name = "Milo";
         Date birthDate = new Date();
         Dog animal = AnimalFactory.createDog(name, birthDate);
-        DogHouse.clear();
+        clear();
 
         // When
-        DogHouse.add(animal);
+        add(animal);
 
         // Then
-        DogHouse.getNumberOfDogs();
+        getNumberOfDogs();
+
     }
 
 
     @Test
     public void addDogTest() {
         //Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
+        Dog dog = new Dog("Max", new Date(), 77);
 
         //When
         DogHouse.add(dog);
 
         //Then
-        Assert.assertEquals(dog, DogHouse.getDogById(0));
+        Assert.assertEquals(dog, getDogById(77));
     }
 
     @Test
     public void RemoveDog() {
         //Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
-        DogHouse.add(dog);
+        Dog dog = new Dog("Jack", new Date(), 76);
+        add(dog);
 
         //When
-        DogHouse.remove(dog);
+        remove(dog);
 
         //Then
-        Assert.assertEquals(dog, DogHouse.getDogById(0));
+        Assert.assertEquals(null, DogHouse.getDogById(76));
     }
 
     @Test
     public void RemoveDogWithId() {
         //Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
-        DogHouse.add(dog);
+        Dog dog = new Dog("Willa", new Date(), 75);
+        add(dog);
 
         //When
-        Dog dogNumberTwo = DogHouse.getDogById(0);
+         DogHouse.remove(75);
 
         //Then
-        Assert.assertEquals(0, dogNumberTwo.getId(0));
+        Assert.assertEquals(null, getDogById(75));
     }
 
     @Test
     public void GetNumberOfDogsTest() {
         //Given
-        Dog dog = new Dog("Charlie", new Date(), 0);
-        DogHouse.clear();
+        Dog dog = new Dog("Sparky", new Date(), 74);
+        clear();
 
         //When
-        Integer numberOfDogs = DogHouse.getNumberOfDogs();
+        Integer numberOfDogs = getNumberOfDogs();
 
         //Then
-        Assert.assertEquals(new Integer(0), numberOfDogs());
+        Assert.assertEquals(new Integer(0), getNumberOfDogs());
     }
 }
 

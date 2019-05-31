@@ -6,11 +6,17 @@ import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 import java.util.Date;
 
+import static rocks.zipcodewilmington.animals.animal_storage.CatHouse.getCatById;
+import static rocks.zipcodewilmington.animals.animal_storage.CatHouse.getNumberOfCats;
+
 
 /**
  * @author leon on 4/19/18.
  */
 public class CatHouseTest {
+
+    private Cat testCat = new Cat(null, null, null);
+
     // TODO - Create tests for `void add(Cat cat)`
     // TODO - Create tests for `void remove(Integer id)`
     // TODO - Create tests for `void remove(Cat cat)`
@@ -21,52 +27,52 @@ public class CatHouseTest {
     public void addCatTest() {
 
         //Given
-        Cat cat = new Cat("Nightingale", new Date(), 0);
+        Cat cat = new Cat("Nightingale", new Date(), 77);
 
         //When
         CatHouse.add(cat);
 
         //Then
-        Assert.assertEquals(cat, CatHouse.getCatById(0));
+        Assert.assertEquals(cat, CatHouse.getCatById(77));
     }
 
     @Test
     public void RemoveCat() {
 
         //Given
-        Cat cat = new Cat("Nightingale", new Date(), 0);
+        Cat cat = new Cat("Zula", new Date(), 76);
         CatHouse.add(cat);
 
         //When
         CatHouse.remove(cat);
 
         //Then
-        Assert.assertEquals("Nightingale", CatHouse.getCatById(0));
+        Assert.assertEquals(null, CatHouse.getCatById(76));
     }
 
     @Test
     public void RemoveCatWithId() {
         //Given
-        Cat cat = new Cat("Nightingale", new Date(), 0);
+        Cat cat = new Cat("Harry", new Date(), 75);
         CatHouse.add(cat);
 
         //When
         Cat catNumberTwo = CatHouse.getCatById(0);
 
         //Then
-        Assert.assertEquals(0, catNumberTwo.getId(0));
+        Assert.assertEquals(0, catNumberTwo.getId(75));
     }
 
     @Test
     public void GetNumberOfCatsTest() {
         //Given
-        Cat cat = new Cat("Nightingale", new Date(), 0);
+        Cat cat = new Cat("Oreo", new Date(), 74);
         CatHouse.clear();
 
         //When
-        Integer numberOfCats = CatHouse.getNumberOfCats();
+        Integer numberOfCats = getNumberOfCats();
 
         //Then
-        Assert.assertEquals(new Integer(0), numberOfCats());
+        Assert.assertEquals(new Integer(0), getNumberOfCats());
     }
 }
