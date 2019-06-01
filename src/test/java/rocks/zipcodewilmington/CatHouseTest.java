@@ -57,10 +57,10 @@ public class CatHouseTest {
         CatHouse.add(cat);
 
         //When
-        Cat catNumberTwo = CatHouse.getCatById(0);
+        CatHouse.getCatById(75);
 
         //Then
-        Assert.assertEquals(0, catNumberTwo.getId(75));
+        Assert.assertEquals(null, cat.getId(75));
     }
 
     @Test
